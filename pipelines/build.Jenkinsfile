@@ -1,4 +1,3 @@
-// check push trigger
 pipeline {
     agent {
         label 'general'
@@ -45,12 +44,13 @@ pipeline {
                 }
             }
         }
+
         stage('Trigger Deploy') {
             steps {
-               build job: 'netflix-frontend-deploy', wait: false, parameters: [
-                    string(name: 'SERVICE_NAME', value: "NetflixFrontend")
+                build job: 'netflix-frontend-deploy', wait: false, parameters: [
+                    string(name: 'SERVICE_NAME', value: "NetflixFrontend"),
                     string(name: 'IMAGE_FULL_NAME_PARAM', value: "$IMAGE_FULL_NAME")
-               ]
+                ]
             }
         }
     }
