@@ -15,6 +15,9 @@ pipeline {
     environment {
         IMAGE_TAG = "v1.0.${BUILD_NUMBER}"
         IMAGE_BASE_NAME = 'netflix-frontend'
+        DOCKER_CREDENTIALS = credentials('dockerhub')
+        DOCKER_USERNAME = "${DOCKER_CREDENTIALS_USR}"
+        DOCKER_PASS = "${DOCKER_CREDENTIALS_PSW}"
     }
 
     stages {
